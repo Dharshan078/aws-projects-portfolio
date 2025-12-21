@@ -12,7 +12,7 @@
 
 ### Phase 1: Networking & Security
 * Created a tiered Security Group structure to enforce the **Principle of Least Privilege**:
-    * `ALB-SG`: Open to World (HTTP/80).
+    * `ALB-SG`: Open to Internet (HTTP/80).
     * `App-SG`: Allows traffic **only** from `ALB-SG`.
     * `Data-SG`: Allows traffic **only** from `App-SG` on ports 3306 (MySQL) and 6379 (Redis).
 
