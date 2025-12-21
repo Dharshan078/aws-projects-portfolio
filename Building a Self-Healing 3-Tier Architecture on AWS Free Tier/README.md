@@ -41,7 +41,7 @@ To verify resilience, I performed the following "Chaos" tests:
     * Simulated a crash by terminating a running instance.
     * **Result:** ASG detected the health check failure and provisioned a replacement within 120 seconds.
 
-![ASG Activity History](screenshots/chaos-test-proof.png)
+![ASG Activity History](Screenshots/chaos-test-proof.png)
 
 ## 🚧 Challenges Faced
 **Issue: WordPress "Error Establishing Database Connection"**
