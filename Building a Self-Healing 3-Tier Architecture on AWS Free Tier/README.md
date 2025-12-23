@@ -1,6 +1,11 @@
 # Building a Self-Healing 3-Tier Architecture on AWS Free Tier
 ## Objective: This project demonstrates a production-grade, fault-tolerant web application architecture on AWS. The goal was to deploy a **WordPress** application that is "self-healing"—capable of surviving server failures and traffic spikes without downtime. By decoupling the data layer (RDS + ElastiCache) from the compute layer (EC2 + Auto Scaling), the application achieves high availability and statelessness.
 
+## 💡 Architectural Design Note
+![Architecture Diagram](Screenshots/architecture-diagram.png)
+**Original Plan vs. Free Tier Optimization:**
+The original architectural design utilized **Amazon Aurora (MySQL)** with Read Replicas spanning multiple Availability Zones for maximum high availability. To adhere to the **AWS Free Tier** constraints for this lab, the design was optimized to use **Amazon RDS (MySQL)** for persistence and **ElastiCache (Redis)** for read-traffic offloading. This demonstrates the ability to balance ideal architectural patterns with cost-effective resource management.
+
 ## 🛠️ Tech Stack & Services
 * **Computing:** EC2 Instance, Auto Scaling Group [ASG]
 * **Networking:** VPC, Security Groups, ELB: Application Load Balancer [ALB]
