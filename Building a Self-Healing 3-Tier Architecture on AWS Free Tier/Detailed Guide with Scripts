@@ -1,4 +1,0 @@
-Phase 1: Network and Security
-  1. Created three Security Groups for Application Load Balancer (ALB), EC2 Instance Group and for RDS MySQL Database | ElastiCache
-  2. For ALB inbound rule allows HTTP from internet
-  3. For EC2 Instance 
