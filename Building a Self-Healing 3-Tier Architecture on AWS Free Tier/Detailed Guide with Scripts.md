@@ -26,5 +26,23 @@
   1. On IAM Dashboard Create a Role and Select EC2 for Service
   2. For Permissions Select AmazonSSMManagedInstanceCore and name it as EC2-Admin-Role
 
-  Now create an EC2 Instance to build an Image and name it as Golden-Image-Builder-
+  Now create an EC2 Instance to build an Image and name it as Golden-Image-Builder or whatever you want
+  1. Select t3.micro for EC2 Instance and for image select Amazon Linux 2023
+  2. Select WebServer-SG we previously created on Phase 1 and for IAM Instance Policy Select EC2-Admin-Role
+  3. Now for User Data
+  `#!/bin/bash
+  dnf update -y
+  # Install Apache, PHP, and MariaDB (MySQL) client
+  dnf install -y httpd wget php-fpm php-mysqli php-json php php-devel mariadb105
+  # Start and enable the Web Server
+  systemctl start httpd
+  systemctl enable httpd
+  # Set permissions so we can edit files later
+  usermod -a -G apache ec2-user
+  chown -R ec2-user:apache /var/www
+  chmod 2775 /var/www
+  find /var/www -type d -exec chmod 2775 {} \;
+  find /var/www -type f -exec chmod 0664 {} \;
+  # Create a test file to verify PHP is working
+  echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php`
   
